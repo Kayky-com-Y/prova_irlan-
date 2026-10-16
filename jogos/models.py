@@ -31,7 +31,7 @@ class Equipe(models.Model):
     curso = models.CharField(max_length=100)
     cor = models.CharField(max_length=255)
     criada_em = models.DateTimeField(auto_now_add=True)
-    tecnico = models.ForeignKey(Tecnico)
+    tecnico = models.ForeignKey(Tecnico, on_delete= models.CASCADE)
 
     def __str__(self):
         return self.nome
@@ -44,7 +44,8 @@ class Atleta(models.Model):
     nome = models.CharField(max_length=100)
     matricula = models.CharField(max_length=100, unique=True)
     data_nacimento = models.DateField()
-    equipe = models.ForeignKey(Equipe)
+    equipe = models.ForeignKey(Equipe, on_delete= models.CASCADE)
+    modalidade = models.ManyToManyField(Modalidade)
 
     def __str__(self):
         return self.nome
