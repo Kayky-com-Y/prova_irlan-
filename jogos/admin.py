@@ -17,3 +17,5 @@ class EquipeAdmin(admin.ModelAdmin):
 @admin.register(Atleta)
 class AtletaAdmin(admin.ModelAdmin):
     list_display = ['nome', 'matricula', 'equipe']
+    list_filter = ['equipe']
+    filter_horizontal = ['modalidade']
